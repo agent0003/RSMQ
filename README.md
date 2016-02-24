@@ -6,7 +6,10 @@ At the moment just containing SendMessage support.
 ## Example
 
 ```c#
-var rsmq = new RSMQ.RSMQ("<connectionstring>"));
+using StackExchange.Redis;
+using RSMQ;
+
+var rsmq = new RSMQ.RSMQ(ConnectionMultiplexer.Connect("<connectionstring>"));
 rsmq.SendMessage(new RSMQ.MessageOptions {
 	Message = @"{ ""kioskId"": ""GmZWMn3fifcjEqSyAAAC"", ""type"": ""reload"" }",
 	QueueName = "kiosk-queue"
