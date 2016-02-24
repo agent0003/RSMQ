@@ -1,5 +1,5 @@
 # Redis Simple Message Queue 
-Port of the [node module](https://github.com/smrchy/rsmq) for C#
+Basic subset of the [RSMQ node module](https://github.com/smrchy/rsmq) for C#
 
 At the moment just containing SendMessage support.
 
