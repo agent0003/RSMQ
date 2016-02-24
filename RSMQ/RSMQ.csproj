@@ -46,7 +46,7 @@
     <Compile Include="Base36.cs" />
     <Compile Include="MessageOptions.cs" />
     <Compile Include="Queue.cs" />
-    <Compile Include="RSMQ.cs" />
+    <Compile Include="RedisSMQ.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

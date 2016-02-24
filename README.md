@@ -1,5 +1,5 @@
 # Redis Simple Message Queue 
-Basic subset of the [RSMQ node module](https://github.com/smrchy/rsmq) for C#
+Very basic subset of the [RSMQ node module](https://github.com/smrchy/rsmq) for C#
 
 At the moment just containing SendMessage support.
 
@@ -9,9 +9,9 @@ At the moment just containing SendMessage support.
 using StackExchange.Redis;
 using RSMQ;
 
-var rsmq = new RSMQ.RSMQ(ConnectionMultiplexer.Connect("<connectionstring>"));
-rsmq.SendMessage(new RSMQ.MessageOptions {
-	Message = @"{ ""kioskId"": ""GmZWMn3fifcjEqSyAAAC"", ""type"": ""reload"" }",
+var rsmq = new RedisSMQ(ConnectionMultiplexer.Connect("<connectionstring>"));
+rsmq.SendMessage(new MessageOptions {
+	Message = "message",
 	QueueName = "kiosk-queue"
 });
 ```

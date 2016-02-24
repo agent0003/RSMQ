@@ -2,6 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using StackExchange.Redis;
 using System.Configuration;
+using RSMQ;
 
 namespace RSMQTests
 {
@@ -17,8 +18,8 @@ namespace RSMQTests
         [TestMethod]
         public void SendMessageTest()
         {
-            var rsmq = new RSMQ.RSMQ(ConnectionMultiplexer.Connect(ConfigurationManager.ConnectionStrings["redis"].ConnectionString));
-            var messageId = rsmq.SendMessage(new RSMQ.MessageOptions
+            var rsmq = new RedisSMQ(ConnectionMultiplexer.Connect(ConfigurationManager.ConnectionStrings["redis"].ConnectionString));
+            var messageId = rsmq.SendMessage(new MessageOptions
             {
                 Message = @"{ ""kioskId"": ""GmZWMn3fifcjEqSyAAAC"", ""type"": ""reload"" }",
                 QueueName = "kiosk-queue"
