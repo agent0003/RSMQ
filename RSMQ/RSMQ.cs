@@ -34,6 +34,11 @@ namespace RSMQ
             if (queue == null)
                 return null;
 
+            if (options.Message == null)
+                throw new ArgumentException("Message");
+            if (options.Message.Length > queue.Maxsize)
+                throw new ArgumentException("Message length exceeded");
+
             var db = RedisConnection.GetDatabase(RedisDbIndex);
 
             db.SortedSetAdd(RedisNameSpace + ":" + options.QueueName, queue.Uid, queue.Ts + options.Delay * 1000);
@@ -50,7 +55,6 @@ namespace RSMQ
         {
             IServer server = RedisConnection.GetServer(RedisConnection.GetEndPoints().First());
             var db = RedisConnection.GetDatabase(RedisDbIndex);
-            //var time = db.ti
             var values = db.HashGet(RedisNameSpace + ":" + queueName + ":Q", new RedisValue[] { "vt", "delay", "maxsize" });
             if (!values[0].HasValue)
                 return null;
@@ -71,7 +75,7 @@ namespace RSMQ
                 Maxsize = maxsize,
                 Ts = ts
             };
-            
+
             if (includeUid)
             {
                 var uid = _Makeid(22);
@@ -104,7 +108,7 @@ namespace RSMQ
             return text;
         }
 
-        
+
 
     }
 }
