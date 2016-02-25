@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RSMQ
 {
-    public class Queue
+    internal class RSMQQueue
     {
         public int Vt { get; set; }
         public int Delay { get; set; }

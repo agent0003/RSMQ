@@ -51,7 +51,7 @@ namespace RSMQ
 
 
 
-        Queue _GetQueue(string queueName, bool includeUid)
+        RSMQQueue _GetQueue(string queueName, bool includeUid)
         {
             IServer server = RedisConnection.GetServer(RedisConnection.GetEndPoints().First());
             var db = RedisConnection.GetDatabase(RedisDbIndex);
@@ -68,7 +68,7 @@ namespace RSMQ
             var ms = microseconds.ToString().Substring(0, 6).PadLeft(6, '0');
             var ts = long.Parse(_ConvertToUnixTimestamp(DateTime.Now).ToString() + ms.Substring(0, 3));
 
-            var q = new Queue
+            var q = new RSMQQueue
             {
                 Vt = vt,
                 Delay = delay,
