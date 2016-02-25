@@ -19,7 +19,7 @@ namespace RSMQTests
         public void SendMessageTest()
         {
             var rsmq = new RedisSMQ(ConnectionMultiplexer.Connect(ConfigurationManager.ConnectionStrings["redis"].ConnectionString));
-            var messageId = rsmq.SendMessage(new MessageOptions
+            var messageId = rsmq.SendMessage(new RSMQMessage
             {
                 Message = @"{ ""kioskId"": ""GmZWMn3fifcjEqSyAAAC"", ""type"": ""reload"" }",
                 QueueName = "kiosk-queue"

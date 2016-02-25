@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RSMQ
 {
-    public class MessageOptions
+    public class RSMQMessage
     {
         public string Message { get; set; }
         public string QueueName { get; set; }
